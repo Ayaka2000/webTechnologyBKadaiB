@@ -1,25 +1,70 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>課題B</title>
-</head>
-<body>
-  <h1>課題B 1.クッキーの利用</h1>
-  <p> 表示したい文章はここに記述しましょう </p>
-  <script>
-    function getName() {
-    var msg;
-    var name=getCookie("name");
-      
-      if(name==null){
-        var name = prompt('名前を入力してください');
-        msg="こんにちは。"+name+"初めての訪問です。";
-      }
-      else {
-        msg="今日は"+name+"さん";
-      }
-      document.write(msg);
-    }
-  </script>
-</body>
+  <head>
+    <meta charset="utf-8">
+    <title>課題B_g18909</title>
+    <p>
+      課題B　機能1の実装
+    </p>
+    <script language="JavaScript" type="text/javascript">
+<!--
+function setCookie(keyName,valueName){
+	
+}
+function getCookie(keyName){
+	var cookieKey=document.cookie.split("; ");
+	for (var i=0;  i<cookieKey.length; i++){
+		var cookieValue=cookieKey[i].split("=");
+		if(keyName==cookieValue[0]){
+				return unescape(cookieValue[1]);
+		}
+		
+	}
+	return null;
+	
+}
+
+function getName(){
+	var msg;
+	var yourName=getCookie("name");
+	
+	if(yourName==null){
+		msg="初めての訪問です。";
+	}
+	else{
+		msg=yourName+"さん　　こんにちは！";
+	}
+	document.write(msg);	
+}
+
+function setName(){
+	var yourName="";
+	yourName=document.frm_Cookie.txt_Name.value;
+	if(yourName!=""){
+		setCookie("name",yourName);
+	}
+	else{
+		alert ("名前を入力してください");
+	}	
+}
+
+
+//-->
+</script>
+  
+  </head>
+  
+  <body>
+    <script language="JavaScript" type="text/javascript">
+<!--
+getName();	
+//-->
+</script>
+<form name="frm_Cookie">
+  <p>名前: 
+    <input type="text" name="txt_Name" value="" />
+    <input type="button" value="登録"onclick="setCookie('name',document.frm_Cookie.txt_Name.value)" />
+</form>
+  
+  </body>
 </html>

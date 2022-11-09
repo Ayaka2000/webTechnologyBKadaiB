@@ -7,8 +7,15 @@
   <h1>課題B 1.クッキーの利用</h1>
   <p> 表示したい文章はここに記述しましょう </p>
   <script>
-    prompt('名前を入力してください');
-    document.cookie = 'name=Umeko';
+    if(name==null){
+      var name = prompt('名前を入力してください');
+      msg="こんにちは。"+name+"初めての訪問です。";
+    }
+    else {
+      msg=name+"さん　　こんにちは！";
+    }
+    document.write(msg);
+    }
   </script>
 </body>
 </html>

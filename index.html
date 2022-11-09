@@ -47,7 +47,10 @@ function setName(){
 		alert ("名前を入力してください");
 	}	
 }
-
+function delCookie(keyName){
+	document.cookie=keyName+"="+escape(' ')+"; expires=Fri, 31 Dec 1999 23:59:59 GMT;";
+	
+}
 
 //-->
 </script>
@@ -64,6 +67,7 @@ getName();
   <p>名前: 
     <input type="text" name="txt_Name" value="" />
     <input type="button" value="登録"onclick="setCookie('name',document.frm_Cookie.txt_Name.value)" />
+	  <input type="button" value="クッキーから削除する"onclick="delCookie('name')" />
 </form>
   
   </body>

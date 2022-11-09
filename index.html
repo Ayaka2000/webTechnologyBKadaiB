@@ -8,23 +8,12 @@
     </p>
     <script language="JavaScript" type="text/javascript">
 <!--
-//----------【クッキー操作汎用プログラム】----------
-
-//------------------------------------------------------
-//  クッキーに記憶する
-//  引数（キー名、値）　　　戻り値なし
-//------------------------------------------------------
+//cookieにセット
 function setCookie(keyName,valueName){
-	life=new Date()
-	//寿命を３０日
-	life.setTime(life.getTime()+24*60*60*1000*30);
 	document.cookie=keyName+"="+escape(valueName)+"; expires="+life.toGMTString();
 	
 }
-//------------------------------------------------------
-//  クッキーから値を取得
-//  引数（キー名）　　　戻り値　値
-//------------------------------------------------------
+//cookie　値取得
 function getCookie(keyName){
 	var cookieKey=document.cookie.split("; ");
 	for (var i=0;  i<cookieKey.length; i++){

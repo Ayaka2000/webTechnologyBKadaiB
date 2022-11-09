@@ -8,9 +8,23 @@
     </p>
     <script language="JavaScript" type="text/javascript">
 <!--
+//----------【クッキー操作汎用プログラム】----------
+
+//------------------------------------------------------
+//  クッキーに記憶する
+//  引数（キー名、値）　　　戻り値なし
+//------------------------------------------------------
 function setCookie(keyName,valueName){
+	life=new Date()
+	//寿命を３０日
+	life.setTime(life.getTime()+24*60*60*1000*30);
+	document.cookie=keyName+"="+escape(valueName)+"; expires="+life.toGMTString();
 	
 }
+//------------------------------------------------------
+//  クッキーから値を取得
+//  引数（キー名）　　　戻り値　値
+//------------------------------------------------------
 function getCookie(keyName){
 	var cookieKey=document.cookie.split("; ");
 	for (var i=0;  i<cookieKey.length; i++){
@@ -23,13 +37,22 @@ function getCookie(keyName){
 	return null;
 	
 }
+//------------------------------------------------------
+//  クッキーを削除
+//  引数（キー名）　　　戻り値なし
+//------------------------------------------------------
+function delCookie(keyName){
+	document.cookie=keyName+"="+escape(' ')+"; expires=Fri, 31 Dec 1999 23:59:59 GMT;";
+	
+}
+//----------【クッキー操作汎用プログラムここまで】----------
 
 function getName(){
 	var msg;
 	var yourName=getCookie("name");
 	
 	if(yourName==null){
-		msg="初めての訪問です。";
+		msg="こんにちは。初めての訪問です。";
 	}
 	else{
 		msg=yourName+"さん　　こんにちは！";
@@ -47,18 +70,15 @@ function setName(){
 		alert ("名前を入力してください");
 	}	
 }
-function delCookie(keyName){
-	document.cookie=keyName+"="+escape(' ')+"; expires=Fri, 31 Dec 1999 23:59:59 GMT;";
-	
-}
+
 
 //-->
 </script>
   
+  
   </head>
   
-  <body>
-    <script language="JavaScript" type="text/javascript">
+  <script language="JavaScript" type="text/javascript">
 <!--
 getName();	
 //-->
@@ -66,10 +86,14 @@ getName();
 <form name="frm_Cookie">
   <p>名前: 
     <input type="text" name="txt_Name" value="" />
-    <input type="button" value="登録"onclick="setCookie('name',document.frm_Cookie.txt_Name.value)" />
-	  <input type="button" value="クッキーから削除する"onclick="delCookie('name')" />
-	  <input type="button" value="リロード"onclick="window.history.go(0)" name="button" />
+  <p><p><p><p><p></p>
+  <p> 
+    <input type="button" value="クッキーに記憶する"onclick="setCookie('name',document.frm_Cookie.txt_Name.value)" />
+    <input type="button" value="クッキーから削除する"onclick="delCookie('name')" />
+    <input type="button" value="再読込"onclick="window.history.go(0)" name="button" />
+  <p><p><p><p><p></p>
 </form>
+  
   
   </body>
 </html>

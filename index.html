@@ -10,9 +10,12 @@
 <!--
 //cookieにセット
 function setCookie(keyName,valueName){
-	document.cookie=keyName+"="+escape(valueName)+";
-	
+	life=new Date()
+	//寿命を３０日
+	life.setTime(life.getTime()+24*60*60*1000*30);
+	document.cookie=keyName+"="+escape(valueName)+"; expires="+life.toGMTString();	
 }
+	    
 //cookie　値取得
 function getCookie(keyName){
 	var cookieKey=document.cookie.split("; ");
@@ -20,21 +23,16 @@ function getCookie(keyName){
 		var cookieValue=cookieKey[i].split("=");
 		if(keyName==cookieValue[0]){
 				return unescape(cookieValue[1]);
-		}
-		
+		}	
 	}
-	return null;
-	
+	return null;	
 }
-//------------------------------------------------------
-//  クッキーを削除
-//  引数（キー名）　　　戻り値なし
-//------------------------------------------------------
+	    
+//cookieに格納された値を削除
+
 function delCookie(keyName){
 	document.cookie=keyName+"="+escape(' ')+"; expires=Fri, 31 Dec 1999 23:59:59 GMT;";
-	
 }
-//----------【クッキー操作汎用プログラムここまで】----------
 
 function getName(){
 	var msg;
@@ -77,8 +75,8 @@ getName();
     <input type="text" name="txt_Name" value="" />
   <p><p><p><p><p></p>
   <p> 
-    <input type="button" value="クッキーに記憶する"onclick="setCookie('name',document.frm_Cookie.txt_Name.value)" />
-    <input type="button" value="クッキーから削除する"onclick="delCookie('name')" />
+    <input type="button" value="登録"onclick="setCookie('name',document.frm_Cookie.txt_Name.value)" />
+    <input type="button" value="削除"onclick="delCookie('name')" />
   <p><p><p><p><p></p>
 </form>
   

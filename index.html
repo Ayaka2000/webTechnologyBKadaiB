@@ -39,10 +39,10 @@ function getName(){
 	var yourName=getCookie("name");
 	
 	if(yourName==null){
-		msg="こんにちは。初めての訪問です。";
+		msg="初めての訪問です。名前を登録してください。";
 	}
 	else{
-		msg=yourName+"さん　　こんにちは！";
+		msg="今日は"+yourName+"さん";
 	}
 	document.write(msg);	
 }
